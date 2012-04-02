@@ -6,6 +6,7 @@ gem 'jquery-rails'
 gem "haml", ">= 3.1.4"
 gem "devise", ">= 2.1.0.rc"
 gem "bootstrap-sass", ">= 2.0.1"
+gem 'thin'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
