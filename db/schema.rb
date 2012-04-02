@@ -11,7 +11,100 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120402175142) do
+ActiveRecord::Schema.define(:version => 20120402190032) do
+
+  create_table "books", :force => true do |t|
+    t.string   "title"
+    t.integer  "temple_id"
+    t.integer  "category_id"
+    t.string   "author"
+    t.date     "date_received"
+    t.string   "shelve_location"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "books", ["category_id"], :name => "index_books_on_category_id"
+  add_index "books", ["temple_id"], :name => "index_books_on_temple_id"
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "contacts", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "street"
+    t.string   "apt"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "homephone"
+    t.string   "cellphone"
+    t.string   "workphone"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "contacts", ["user_id"], :name => "index_contacts_on_user_id"
+
+  create_table "course_periods", :force => true do |t|
+    t.date     "start_date"
+    t.integer  "course_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "course_periods", ["course_id"], :name => "index_course_periods_on_course_id"
+
+  create_table "courses", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "inventories", :force => true do |t|
+    t.integer  "book_id"
+    t.integer  "borrow_out"
+    t.integer  "temple_out"
+    t.integer  "course_out"
+    t.integer  "quantity"
+    t.integer  "in_stock"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "inventories", ["book_id"], :name => "index_inventories_on_book_id"
+
+  create_table "lendings", :force => true do |t|
+    t.integer  "book_id"
+    t.date     "date_of_lend"
+    t.date     "date_of_return"
+    t.date     "due_date"
+    t.integer  "user_id"
+    t.integer  "course_period_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "lendings", ["book_id"], :name => "index_lendings_on_book_id"
+  add_index "lendings", ["course_period_id"], :name => "index_lendings_on_course_period_id"
+  add_index "lendings", ["user_id"], :name => "index_lendings_on_user_id"
+
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "temples", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -28,6 +121,7 @@ ActiveRecord::Schema.define(:version => 20120402175142) do
     t.datetime "updated_at",                             :null => false
     t.string   "name"
     t.string   "username"
+    t.integer  "role_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
