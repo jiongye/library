@@ -7,6 +7,8 @@ Library::Application.routes.draw do
   resources :users
   resources :books
   resources :categories, :except => [:show]
+  resources :temples, :except => [:show]
+  resources :courses, :except => [:show]
 
   root :to => "home#index"
 end
