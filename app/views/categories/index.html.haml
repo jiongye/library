@@ -1,0 +1,22 @@
+#category
+  %h3
+    List of Categories
+
+  %table.table.table-striped.table-bordered
+    %thead
+      %tr
+        %th
+          Name
+        %th
+
+    - @categories.each do |x|
+      %tr
+        %td
+          = x.name
+        %td
+          = link_to 'Edit', edit_category_path(x), :class => 'btn'
+          &nbsp;
+          = link_to '<i class="icon-trash icon-white"></i> Delete'.html_safe, category_path(x), :method => :delete, :confirm => "Are you sure?", :class => 'btn btn-danger'
+
+  %p
+    = link_to 'Create New Category', new_category_path

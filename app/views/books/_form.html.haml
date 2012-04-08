@@ -1,0 +1,15 @@
+= simple_form_for book, :html => { :class => 'form-horizontal' }, :defaults => { :input_html => { :class => 'span4' } } do |f|
+  = f.error_notification
+
+  = f.input :title
+  = f.input :author
+  = f.input :date_received, :input_html => { :class => 'span2' }
+  = f.input :shelve_location
+  = f.association :category
+  = f.association :temple
+
+  .form-actions
+    = f.button :submit, :class => 'btn btn-primary'
+    = link_to "Cancel", books_path, :class => 'btn'
+
+

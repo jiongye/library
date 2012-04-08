@@ -1,0 +1,26 @@
+#book
+  %h3
+    List of Books
+
+  %table.table.table-striped.table-bordered
+    %thead
+      %tr
+        %th
+          Title
+        %th
+          Author
+        %th
+
+    - @books.each do |x|
+      %tr
+        %td
+          = link_to x.title, book_path(x)
+        %td
+          = x.author
+        %td
+          = link_to 'Edit', edit_book_path(x), :class => 'btn'
+          &nbsp;
+          = link_to '<i class="icon-trash icon-white"></i> Delete'.html_safe, book_path(x), :method => :delete, :confirm => "Are you sure?", :class => 'btn btn-danger'
+
+  %p
+    = link_to 'Create New Book', new_book_path

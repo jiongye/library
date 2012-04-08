@@ -1,0 +1,34 @@
+#book
+  %p
+    %span.field_name
+      Title:
+    = @book.title
+
+  %p
+    %span.field_name
+      Author:
+    = @book.author
+
+  %p
+    %span.field_name
+      Date Received:
+    = @book.date_received
+
+  %p
+    %span.field_name
+      Shelve Location:
+    = @book.shelve_location
+
+  %p
+    %span.field_name
+      Category:
+    = @book.category.try(:name)
+
+  %p
+    %span.field_name
+      Temple:
+    = @book.temple.try(:name)
+
+  %hr
+  %p
+    = link_to "Back to Books index", books_path
