@@ -11,7 +11,7 @@ Role.create! :name => 'librarian'
 Role.create! :name => 'borrower'
 
 puts 'SETTING UP DEFAULT USER LOGIN'
-User.create! :name => 'Jiongye Li', :email => 'jli@tiananntemple.org', :password => 'dao123', :password_confirmation => 'dao123', :username => 'jiongye', :role => admin_role
-User.create! :name => 'Admin', :email => 'admin@tiananntemple.org', :password => 'password', :password_confirmation => 'password', :username => 'admin', :role => admin_role
+User.create! :name => 'Jiongye Li', :email => 'jli@tiananntemple.org', :password => 'dao123', :password_confirmation => 'dao123', :username => 'jiongye', :role_id => admin_role.id
+User.create! :name => 'Admin', :email => 'admin@tiananntemple.org', :password => 'password', :password_confirmation => 'password', :username => 'admin', :role_id => admin_role.id
 
 

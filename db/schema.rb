@@ -35,16 +35,16 @@ ActiveRecord::Schema.define(:version => 20120402190032) do
 
   create_table "contacts", :force => true do |t|
     t.integer  "user_id"
-    t.string   "firstname"
-    t.string   "lastname"
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "street"
     t.string   "apt"
     t.string   "city"
     t.string   "state"
     t.string   "zip"
-    t.string   "homephone"
-    t.string   "cellphone"
-    t.string   "workphone"
+    t.string   "home_phone"
+    t.string   "cell_phone"
+    t.string   "work_phone"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -124,7 +124,6 @@ ActiveRecord::Schema.define(:version => 20120402190032) do
     t.integer  "role_id"
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

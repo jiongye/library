@@ -1,0 +1,11 @@
+= simple_form_for course_period, :html => { :class => 'form-horizontal' } do |f|
+  = f.error_notification
+
+  = f.association :course
+  = f.input :start_date
+
+  .form-actions
+    = f.button :submit, :class => 'btn btn-primary'
+    = link_to "Cancel", course_periods_path, :class => 'btn'
+
+

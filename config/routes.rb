@@ -4,11 +4,14 @@ Library::Application.routes.draw do
   end
 
   devise_for :users
-  resources :users
+
+  post "create_user" => "users#create"
+  resources :users, :except => [:create]
   resources :books
   resources :categories, :except => [:show]
   resources :temples, :except => [:show]
   resources :courses, :except => [:show]
+  resources :course_periods, :except => [:show]
 
   root :to => "home#index"
 end
