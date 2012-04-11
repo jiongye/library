@@ -1,0 +1,15 @@
+= simple_form_for inventory, :html => { :class => 'form-horizontal' } do |f|
+  = f.error_notification
+
+  = f.association :book, :input_html => { :class => 'span4' }
+  = f.input :quantity
+  = f.input :borrow_out
+  = f.input :temple_out
+  = f.input :course_out
+  = f.input :in_stock
+
+  .form-actions
+    = f.button :submit, :class => 'btn btn-primary'
+    = link_to "Cancel", inventories_path, :class => 'btn'
+
+

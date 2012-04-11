@@ -12,6 +12,7 @@ Library::Application.routes.draw do
   resources :temples, :except => [:show]
   resources :courses, :except => [:show]
   resources :course_periods, :except => [:show]
+  resources :inventories, :except => [:show]
 
   root :to => "home#index"
 end

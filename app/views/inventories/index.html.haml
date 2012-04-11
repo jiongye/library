@@ -1,0 +1,42 @@
+#inventory
+  %h3
+    List of Inventories
+
+  %table.table.table-striped.table-bordered
+    %thead
+      %tr
+        %th
+          Book Title
+        %th
+          Quantity
+        %th
+          Borrow Out
+        %th
+          Temple Out
+        %th
+          Course Out
+        %th
+          In Stock
+        %th
+
+    - @inventories.each do |x|
+      %tr
+        %td
+          = link_to x.book.title, book_path(x)
+        %td
+          = x.quantity
+        %td
+          = x.borrow_out
+        %td
+          = x.temple_out
+        %td
+          = x.course_out
+        %td
+          = x.in_stock
+        %td
+          = link_to 'Edit', edit_inventory_path(x), :class => 'btn'
+          &nbsp;
+          = link_to '<i class="icon-trash icon-white"></i> Delete'.html_safe, inventory_path(x), :method => :delete, :confirm => "Are you sure?", :class => 'btn btn-danger'
+
+  %p
+    = link_to 'Create New Inventory', new_inventory_path
