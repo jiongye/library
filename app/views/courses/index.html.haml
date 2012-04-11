@@ -1,6 +1,6 @@
 #course
   %h3
-    List of Courses
+    List of Classes
 
   %table.table.table-striped.table-bordered
     %thead
@@ -19,4 +19,4 @@
           = link_to '<i class="icon-trash icon-white"></i> Delete'.html_safe, course_path(x), :method => :delete, :confirm => "Are you sure?", :class => 'btn btn-danger'
 
   %p
-    = link_to 'Create New Course', new_course_path
+    = link_to 'Create New Class', new_course_path

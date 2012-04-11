@@ -13,6 +13,7 @@ Library::Application.routes.draw do
   resources :courses, :except => [:show]
   resources :course_periods, :except => [:show]
   resources :inventories, :except => [:show]
+  resource  :admin, :only => [:show]
 
   root :to => "home#index"
 end

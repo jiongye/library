@@ -1,12 +1,12 @@
 #course_period
   %h3
-    List of Course Periods
+    List of Class Periods
 
   %table.table.table-striped.table-bordered
     %thead
       %tr
         %th
-          Course Name
+          Class Name
         %th
           Start Date
         %th
@@ -23,4 +23,4 @@
           = link_to '<i class="icon-trash icon-white"></i> Delete'.html_safe, course_period_path(x), :method => :delete, :confirm => "Are you sure?", :class => 'btn btn-danger'
 
   %p
-    = link_to 'Create New Course Period', new_course_period_path
+    = link_to 'Create New Class Period', new_course_period_path

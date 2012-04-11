@@ -13,7 +13,7 @@ class CoursePeriodsController < ApplicationController
     @course_period = CoursePeriod.new(params[:course_period])
 
     if @course_period.save
-      redirect_to course_periods_path, :notice => 'The new course period was successfully created'
+      redirect_to course_periods_path, :notice => 'The new class period was successfully created'
     else
       render 'new'
     end
@@ -27,7 +27,7 @@ class CoursePeriodsController < ApplicationController
     @course_period = CoursePeriod.find(params[:id])
 
     if @course_period.update_attributes(params[:course_period])
-      redirect_to course_periods_path, :notice => 'The course period was successfully updated'
+      redirect_to course_periods_path, :notice => 'The class period was successfully updated'
     else
       render :action => "edit"
     end
@@ -37,7 +37,7 @@ class CoursePeriodsController < ApplicationController
     @course_period = CoursePeriod.find(params[:id])
 
     @course_period.destroy
-    redirect_to course_periods_path, :notice => "The course period was successfully deleted"
+    redirect_to course_periods_path, :notice => "The class period was successfully deleted"
   end
 
 end
