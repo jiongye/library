@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable
 
   #validates_presence_of :email
-  validates_uniqueness_of :email, :allow_blank => true
-  validates_format_of :email, :with => /\A[^@]+@[^@]+\z/, :allow_blank => true, :if => :email_changed?
+  validates_uniqueness_of :email, :allow_blank => true, :case_sensitive => false
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :allow_blank => true
 
   validates_presence_of :password, :if => :password_required?
   validates_confirmation_of :password, :if => :password_required?

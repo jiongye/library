@@ -1,12 +1,13 @@
 ### UTILITY METHODS ###
 
 def create_visitor
-  @visitor ||= { :name => "Testy McUserton", :email => "example@example.com",
+  @visitor ||= { :name => "Testy McUserton", :username => "example@example.com",
     :password => "please", :password_confirmation => "please" }
+  FactoryGirl.create(:role)
 end
 
 def find_user
-  @user ||= User.first conditions: {:email => @visitor[:email]}
+  @user ||= User.first conditions: {:username => @visitor[:username]}
 end
 
 def create_unconfirmed_user
@@ -19,11 +20,11 @@ end
 def create_user
   create_visitor
   delete_user
-  @user = FactoryGirl.create(:user, email: @visitor[:email])
+  @user = FactoryGirl.create(:user, :username => @visitor[:username])
 end
 
 def delete_user
-  @user ||= User.first conditions: {:email => @visitor[:email]}
+  @user ||= User.first conditions: {:username => @visitor[:username]}
   @user.destroy unless @user.nil?
 end
 
@@ -31,6 +32,7 @@ def sign_up
   delete_user
   visit '/users/sign_up'
   fill_in "Name", :with => @visitor[:name]
+  fill_in "Username", :with => @visitor[:username]
   fill_in "Email", :with => @visitor[:email]
   fill_in "Password", :with => @visitor[:password]
   fill_in "Password confirmation", :with => @visitor[:password_confirmation]
@@ -40,7 +42,7 @@ end
 
 def sign_in
   visit '/users/sign_in'
-  fill_in "Email", :with => @visitor[:email]
+  fill_in "Username", :with => @visitor[:username]
   fill_in "Password", :with => @visitor[:password]
   click_button "Sign in"
 end
@@ -111,8 +113,8 @@ When /^I return to the site$/ do
   visit '/'
 end
 
-When /^I sign in with a wrong email$/ do
-  @visitor = @visitor.merge(:email => "wrong@example.com")
+When /^I sign in with a wrong username$/ do
+  @visitor = @visitor.merge(:username => "wrong@example.com")
   sign_in
 end
 
@@ -178,7 +180,7 @@ Then /^I should see a signed out message$/ do
 end
 
 Then /^I see an invalid login message$/ do
-  page.should have_content "Invalid email or password."
+  page.should have_content "Invalid username or password."
 end
 
 Then /^I should see an account edited message$/ do

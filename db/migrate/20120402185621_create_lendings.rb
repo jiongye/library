@@ -7,7 +7,7 @@ class CreateLendings < ActiveRecord::Migration
       t.date :due_date
       t.references :user
       t.references :course_period
-      t.boolean :returned
+      t.boolean :returned, :default => false
 
       t.timestamps
     end

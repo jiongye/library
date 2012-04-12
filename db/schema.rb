@@ -68,13 +68,13 @@ ActiveRecord::Schema.define(:version => 20120402190032) do
 
   create_table "inventories", :force => true do |t|
     t.integer  "book_id"
-    t.integer  "borrow_out"
-    t.integer  "temple_out"
-    t.integer  "course_out"
-    t.integer  "quantity"
-    t.integer  "in_stock"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "borrow_out", :default => 0
+    t.integer  "temple_out", :default => 0
+    t.integer  "course_out", :default => 0
+    t.integer  "quantity",   :default => 0
+    t.integer  "in_stock",   :default => 0
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   add_index "inventories", ["book_id"], :name => "index_inventories_on_book_id"
@@ -86,9 +86,9 @@ ActiveRecord::Schema.define(:version => 20120402190032) do
     t.date     "due_date"
     t.integer  "user_id"
     t.integer  "course_period_id"
-    t.boolean  "returned"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.boolean  "returned",         :default => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
   end
 
   add_index "lendings", ["book_id"], :name => "index_lendings_on_book_id"
