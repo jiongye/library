@@ -1,0 +1,29 @@
+#return
+  %h2
+    Returning the Book below:
+
+  = simple_form_for @lending, :html => { :class => 'form-horizontal' }, :url => return_path(@lending) do |f|
+    = f.error_notification
+
+    %p
+      %span.field_name
+        Book:
+      = @lending.book.title
+    %p
+      %span.field_name
+        Borrower:
+      = @lending.user.name
+    %p
+      %span.field_name
+        Start Date:
+      = @lending.date_of_lend
+    %p
+      %span.field_name
+        Due Date:
+      = @lending.due_date
+
+    = f.input :date_of_return, :label => "Return Date", :input_html => { :class => 'span2' }
+
+    .form-actions
+      = f.button :submit, :class => 'btn btn-primary'
+      = link_to "Cancel", lendings_path, :class => 'btn'

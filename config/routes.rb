@@ -8,6 +8,8 @@ Library::Application.routes.draw do
   post "create_user" => "users#create"
   resources :users, :except => [:create]
   resources :books
+  resources :lendings
+  resources :returns, :only => [:edit, :update]
   resources :categories, :except => [:show]
   resources :temples, :except => [:show]
   resources :courses, :except => [:show]

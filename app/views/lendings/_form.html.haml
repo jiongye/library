@@ -1,0 +1,13 @@
+= simple_form_for lending, :html => { :class => 'form-horizontal' }, :defaults => { :input_html => { :class => 'span4' } } do |f|
+  = f.error_notification
+
+  = f.association :book
+  = f.association :user
+  = f.association :course_period, :label => "Class Period"
+  = f.input :date_of_lend, :label => "Start Date", :input_html => { :class => 'span2' }
+
+  .form-actions
+    = f.button :submit, :class => 'btn btn-primary'
+    = link_to "Cancel", lendings_path, :class => 'btn'
+
+

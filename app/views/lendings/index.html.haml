@@ -1,0 +1,42 @@
+#lending
+  %h3
+    List of Lendings
+
+  %table.table.table-striped.table-bordered
+    %thead
+      %tr
+        %th
+          Book Title
+        %th
+          Borrower
+        %th
+          Start Date
+        %th
+          Due Date
+        %th
+          Date Of Return
+        %th
+
+    - @lendings.each do |x|
+      %tr
+        %td
+          = link_to x.book.title, book_path(x)
+        %td
+          = x.user.name
+        %td
+          = x.date_of_lend
+        %td
+          = x.due_date
+        %td
+          = x.date_of_return
+        %td
+          = link_to 'Edit', edit_lending_path(x), :class => 'btn'
+          &nbsp;
+
+          = link_to return_button_label(x), edit_return_path(x), :class => 'btn'
+          &nbsp;
+
+          = link_to '<i class="icon-trash icon-white"></i> Delete'.html_safe, lending_path(x), :method => :delete, :confirm => "Are you sure?", :class => 'btn btn-danger'
+
+  %p
+    = link_to 'Create New Lending', new_lending_path

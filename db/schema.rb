@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(:version => 20120402190032) do
     t.date     "due_date"
     t.integer  "user_id"
     t.integer  "course_period_id"
+    t.boolean  "returned"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end
