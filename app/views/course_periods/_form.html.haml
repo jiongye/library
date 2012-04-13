@@ -1,7 +1,7 @@
 = simple_form_for course_period, :html => { :class => 'form-horizontal' } do |f|
   = f.error_notification
 
-  = f.association :course
+  = f.association :course, :label => "Class"
   = f.input :start_date
 
   .form-actions

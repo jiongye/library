@@ -3,7 +3,7 @@ gem 'rails', '3.2.3'
 gem 'pg'
 gem 'simple_form'
 gem 'jquery-rails'
-gem "haml", ">= 3.1.4"
+gem 'haml-rails'
 gem "devise", ">= 2.1.0.rc"
 gem "bootstrap-sass", ">= 2.0.1"
 gem 'thin'
@@ -14,13 +14,20 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem "haml-rails", ">= 0.3.4",             :group => :development
-gem 'debugger',                           :group => [:development, :test]
-gem "rspec-rails", ">= 2.9.0.rc2",        :group => [:development, :test]
-gem "factory_girl_rails", ">= 2.0.0.rc",  :group => [:development, :test]
-gem "email_spec", ">= 1.2.1",             :group => :test
-gem "cucumber-rails", ">= 1.3.0",         :group => :test
-gem "capybara", ">= 1.1.2",               :group => :test
-gem "database_cleaner", ">= 0.7.1",       :group => :test
-gem "launchy", ">= 2.0.5",                :group => :test
+group :development, :test do
+  gem 'debugger'
+  gem "rspec-rails", ">= 2.9.0.rc2"
+end
 
+group :test do
+  gem "factory_girl_rails", ">= 2.0.0.rc"
+  gem "email_spec", ">= 1.2.1"
+  gem "rspec-rails", ">= 2.9.0.rc2"
+end
+
+group :cucumber do
+  gem "cucumber-rails", ">= 1.3.0"
+  gem "capybara", ">= 1.1.2"
+  gem "database_cleaner", ">= 0.7.1"
+  gem "launchy", ">= 2.0.5"
+end
