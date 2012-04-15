@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
 
   def index
-    @books = Book.all
+    @books = Book.page(params[:page])
   end
 
   def show

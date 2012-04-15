@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @users = User.includes(:role)
+    @users = User.includes(:role).page(params[:page])
   end
 
   def show
