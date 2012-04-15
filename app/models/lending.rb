@@ -7,6 +7,7 @@ class Lending < ActiveRecord::Base
   validates_presence_of :book, :date_of_lend, :user
   validates_presence_of :date_of_return, :if => :returned?
 
+  before_validation :check_inventory_exist
   before_save :set_due_date
   after_create :increment_borrow_out
   before_update :get_returned_status
@@ -41,6 +42,12 @@ class Lending < ActiveRecord::Base
     inventory = book.inventory
     inventory.borrow_out += 1
     inventory.save!
+  end
+
+  def check_inventory_exist
+    if book
+      self.errors.add :book, 'You need to create an Inventory for the book bofore you can lend it!' unless book.inventory
+    end
   end
 
 end
