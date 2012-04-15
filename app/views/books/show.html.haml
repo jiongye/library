@@ -29,6 +29,7 @@
       Temple:
     = @book.temple.try(:name)
 
-  %hr
-  %p
-    = link_to "Back to Books index", books_path
+  - if user_signed_in?
+    %hr
+    %p
+      = link_to "Back to Books index", books_path

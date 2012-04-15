@@ -10,6 +10,8 @@
         %th
           Borrower
         %th
+          Class Period
+        %th
           Start Date
         %th
           Due Date
@@ -23,6 +25,8 @@
           = link_to x.book.title, book_path(x)
         %td
           = x.user.name
+        %td
+          = x.course_period
         %td
           = x.date_of_lend
         %td

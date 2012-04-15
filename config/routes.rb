@@ -1,6 +1,6 @@
 Library::Application.routes.draw do
   authenticated :user do
-    root :to => 'home#index'
+    root :to => 'admins#show'
   end
 
   devise_for :users
@@ -8,7 +8,7 @@ Library::Application.routes.draw do
   post "create_user" => "users#create"
   resources :users, :except => [:create]
   resources :books
-  resources :lendings
+  resources :lendings, :except => [:show]
   resources :returns, :only => [:edit, :update]
   resources :categories, :except => [:show]
   resources :temples, :except => [:show]
