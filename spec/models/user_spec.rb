@@ -102,4 +102,29 @@ describe User do
 
   end
 
+  describe "before_save :generate_library_id, on => :create" do
+
+    it "should return 00001 for the first user" do
+      user = FactoryGirl.create(:user)
+      user.library_id.should == '00001'
+    end
+
+    it "should not change library_id on update" do
+      user = FactoryGirl.create(:user)
+      library_id = user.library_id
+      FactoryGirl.create(:user)
+      FactoryGirl.create(:user)
+      user.name = 'test'
+      user.save
+      user.reload.library_id.should == library_id
+    end
+
+    it "should equal to the count of users" do
+      FactoryGirl.create(:user)
+      FactoryGirl.create(:user)
+      user = FactoryGirl.create(:user)
+      user.library_id.should == '00003'
+    end
+  end
+
 end

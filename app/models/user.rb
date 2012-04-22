@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   validates_length_of :password, :within => 6..128, :allow_blank => true
 
   validates_presence_of :role
-  validates_uniqueness_of :username
+  validates_uniqueness_of :username, :library_id
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :username, :role_id, :contact_attributes
@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
 
 
   before_validation :set_default_role
+  before_validation :generate_library_id, :on => :create
 
   accepts_nested_attributes_for :contact, :reject_if => :all_blank
 
@@ -37,4 +38,10 @@ class User < ActiveRecord::Base
   def password_required?
     !persisted? || !password.blank? || !password_confirmation.blank?
   end
+
+  def generate_library_id
+    last_id = User.count
+    self.library_id = ('0' * (5 - last_id.to_s.length)).to_s << (last_id + 1).to_s
+  end
+
 end

@@ -5,7 +5,7 @@ FactoryGirl.define do
     role
 
     name 'Test User'
-    email 'example@example.com'
+    sequence(:email) {|n| "email#{n}@testing.com" }
     password 'please'
     password_confirmation 'please'
     # required if the Devise Confirmable module is used
