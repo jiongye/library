@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password, :if => :password_required?
   validates_length_of :password, :within => 6..128, :allow_blank => true
 
-  validates_presence_of :role
+  validates_presence_of :role, :name
   validates_uniqueness_of :username, :library_id
 
   # Setup accessible (or protected) attributes for your model
@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
   end
 
   def password_required?
-    !persisted? || !password.blank? || !password_confirmation.blank?
+    !password.blank? || !password_confirmation.blank?
   end
 
   def generate_library_id
