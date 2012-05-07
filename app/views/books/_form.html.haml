@@ -1,15 +1,24 @@
-= simple_form_for book, :html => { :class => 'form-horizontal' }, :defaults => { :input_html => { :class => 'span4' } } do |f|
+= simple_form_for book, :html => { :class => 'form-horizontal ajax' } do |f|
   = f.error_notification
 
-  = f.input :title
-  = f.input :author
-  = f.input :date_received, :input_html => { :class => 'span2' }
-  = f.input :shelve_location
-  = f.association :category
-  = f.association :temple
+  .float-left.span5
+    = f.association :category
+    = f.association :temple
+    = f.input :title
+    = f.input :author
 
-  .form-actions
+  .float-left
+    = f.input :shelve_location
+    = f.simple_fields_for :inventory, :defaults => { :input_html => { :class => 'span2' } } do |i|
+      = i.input :quantity
+      = i.input :temple_out
+      = i.input :course_out, :label => 'Class out'
+
+  .float-left.submit
     = f.button :submit, :class => 'btn btn-primary'
-    = link_to "Cancel", books_path, :class => 'btn'
+
+  .clear_both
+
+
 
 

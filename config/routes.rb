@@ -3,7 +3,7 @@ Library::Application.routes.draw do
     root :to => 'admins#show'
   end
 
-  devise_for :users
+  devise_for :users, :skip => [:registrations]
 
   post "create_user" => "users#create"
   resources :users, :except => [:create]
@@ -14,7 +14,6 @@ Library::Application.routes.draw do
   resources :temples, :except => [:show]
   resources :courses, :except => [:show]
   resources :course_periods, :except => [:show]
-  resources :inventories, :except => [:show]
   resource  :admin, :only => [:show]
 
   root :to => "home#index"

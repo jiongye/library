@@ -1,0 +1,19 @@
+%tr
+  %td
+    = book.id
+  %td
+    = link_to book.title, book_path(book)
+  %td
+    = book.temple
+  %td
+    = book.category
+  %td
+    = book.author
+  %td
+    = book.created_at.to_date
+  %td
+    = book.shelve_location
+  %td
+    = link_to 'Edit', edit_book_path(book), :class => 'btn'
+    &nbsp;
+    = link_to '<i class="icon-trash icon-white"></i> Delete'.html_safe, book_path(book), :method => :delete, :confirm => "Are you sure?", :class => 'btn btn-danger'

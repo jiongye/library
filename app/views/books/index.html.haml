@@ -1,28 +1,37 @@
 #book
   %h3
+    Book Entry:
+
+  #form
+    = render 'form', :book => @book
+
+  %hr
+
+  %h3
     List of Books
 
   %table.table.table-striped.table-bordered
     %thead
       %tr
         %th
+          Book ID
+        %th
           Title
+        %th
+          Temple
+        %th
+          Category
         %th
           Author
         %th
+          Date Received
+        %th
+          Shelves Location
+        %th
 
-    - @books.each do |x|
-      %tr
-        %td
-          = link_to x.title, book_path(x)
-        %td
-          = x.author
-        %td
-          = link_to 'Edit', edit_book_path(x), :class => 'btn'
-          &nbsp;
-          = link_to '<i class="icon-trash icon-white"></i> Delete'.html_safe, book_path(x), :method => :delete, :confirm => "Are you sure?", :class => 'btn btn-danger'
+    %tbody
+      - @books.each do |x|
+        = render 'table_row', :book => x
 
   %p
     = paginate @books
-  %p
-    = link_to 'Create New Book', new_book_path

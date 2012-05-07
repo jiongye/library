@@ -1,30 +1,30 @@
 class BooksController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
+  before_filter :all_books, :except => [:destroy]
 
   def index
-    @books = Book.page(params[:page])
+    @book = Book.new
+    @book.build_inventory(:quantity => nil, :temple_out => nil, :course_out => nil)
   end
 
   def show
     @book = Book.find(params[:id])
   end
 
-  def new
-    @book = Book.new
-  end
-
   def create
     @book = Book.new(params[:book])
 
     if @book.save
-      redirect_to books_path, :notice => 'The new book was successfully created'
+      @new_book = Book.new
+      @new_book.build_inventory(:quantity => nil, :temple_out => nil, :course_out => nil)
     else
-      render 'new'
+      @book.build_inventory unless @book.inventory
     end
   end
 
   def edit
     @book = Book.find(params[:id])
+    @book.build_inventory unless @book.inventory
   end
 
   def update
@@ -33,15 +33,21 @@ class BooksController < ApplicationController
     if @book.update_attributes(params[:book])
       redirect_to books_path, :notice => 'The book was successfully updated'
     else
+      @book.build_inventory unless @book.inventory
       render :action => "edit"
     end
   end
 
   def destroy
     @book = Book.find(params[:id])
-
     @book.destroy
     redirect_to books_path, :notice => "The book was successfully deleted"
+  end
+
+  protected
+
+  def all_books
+    @books = Book.page(params[:page])
   end
 
 end
