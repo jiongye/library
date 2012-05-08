@@ -1,0 +1,10 @@
+<% if @new_book %>
+  $('#form').html("<%= escape_javascript(render "form", :book => @new_book) %>")
+  $('#form').prepend("<%= raw escape_javascript("<div class='alert alert-success'>The book #{@book.title} was successfully updated</div>") %>")
+  $('table tbody tr.highlight').html($("<%= escape_javascript(render 'table_row', :book => @book) %>").html());
+  $('#form .alert-success').fadeOut(3000, function(){
+    $(this).remove();
+  })
+<% else %>
+  $('#form').html("<%= escape_javascript(render "form", :book => @book) %>")
+<% end %>

@@ -1,6 +1,8 @@
 #book
   %h3
     Book Entry:
+    %small
+      = link_to 'Add a New Book', new_book_path, :class => 'ajax'
 
   #form
     = render 'form', :book => @book
@@ -10,6 +12,8 @@
   %h3
     List of Books
 
+  %p
+    = raw page_entries_info(@books)
   %table.table.table-striped.table-bordered
     %thead
       %tr

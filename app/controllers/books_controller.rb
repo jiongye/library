@@ -11,6 +11,12 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
 
+  def new
+    @book = Book.new
+    @book.build_inventory(:quantity => nil, :temple_out => nil, :course_out => nil)
+    render 'edit'
+  end
+
   def create
     @book = Book.new(params[:book])
 
@@ -24,17 +30,14 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
-    @book.build_inventory unless @book.inventory
   end
 
   def update
     @book = Book.find(params[:id])
 
     if @book.update_attributes(params[:book])
-      redirect_to books_path, :notice => 'The book was successfully updated'
-    else
-      @book.build_inventory unless @book.inventory
-      render :action => "edit"
+      @new_book = Book.new
+      @new_book.build_inventory(:quantity => nil, :temple_out => nil, :course_out => nil)
     end
   end
 
