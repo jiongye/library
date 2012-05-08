@@ -4,7 +4,7 @@ class BooksController < ApplicationController
 
   def index
     @book = Book.new
-    @book.build_inventory(:quantity => nil, :temple_out => nil, :course_out => nil)
+    @book.build_inventory(:quantity => nil)
   end
 
   def show
@@ -13,7 +13,7 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new
-    @book.build_inventory(:quantity => nil, :temple_out => nil, :course_out => nil)
+    @book.build_inventory(:quantity => nil)
     render 'edit'
   end
 
@@ -22,7 +22,7 @@ class BooksController < ApplicationController
 
     if @book.save
       @new_book = Book.new
-      @new_book.build_inventory(:quantity => nil, :temple_out => nil, :course_out => nil)
+      @new_book.build_inventory(:quantity => nil)
     else
       @book.build_inventory unless @book.inventory
     end
@@ -37,7 +37,7 @@ class BooksController < ApplicationController
 
     if @book.update_attributes(params[:book])
       @new_book = Book.new
-      @new_book.build_inventory(:quantity => nil, :temple_out => nil, :course_out => nil)
+      @new_book.build_inventory(:quantity => nil)
     end
   end
 

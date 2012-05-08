@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120507005545) do
+ActiveRecord::Schema.define(:version => 20120508021039) do
 
   create_table "books", :force => true do |t|
     t.string   "title"
@@ -71,7 +71,6 @@ ActiveRecord::Schema.define(:version => 20120507005545) do
     t.integer  "temple_out", :default => 0
     t.integer  "course_out", :default => 0
     t.integer  "quantity",   :default => 0
-    t.integer  "in_stock",   :default => 0
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end

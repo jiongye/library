@@ -1,11 +1,13 @@
 require 'spec_helper'
 
 describe Lending do
+  before do
+    @book = FactoryGirl.create(:book)
+    @inventory = FactoryGirl.create(:inventory, :book => @book, :quantity => 20)
+  end
 
   describe "before_save :set_due_date" do
     before do
-      @book = FactoryGirl.create(:book)
-      @inventory = FactoryGirl.create(:inventory, :book => @book)
       @lending = FactoryGirl.create(:lending, :book => @book)
     end
 
@@ -22,8 +24,6 @@ describe Lending do
 
   describe "after_create :increment_borrow_out and after_save: update_borrow_out_count" do
     before do
-      @book = FactoryGirl.create(:book)
-      @inventory = FactoryGirl.create(:inventory, :book => @book)
       @borrow_out = @inventory.borrow_out
       @lending = FactoryGirl.create(:lending, :book => @book)
     end
@@ -49,6 +49,15 @@ describe Lending do
       @lending.date_of_return = Date.today + 1.day
       @lending.save!
       @inventory.reload.borrow_out.should == @borrow_out
+    end
+  end
+
+  describe "before_validation: check_inventory" do
+    it "should not create a new lending if the inventory is <= 0" do
+      @inventory.borrow_out = 20
+      @inventory.save
+      lending = FactoryGirl.build(:lending, :book => @book)
+      lending.save.should be_false
     end
   end
 

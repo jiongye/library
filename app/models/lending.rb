@@ -7,6 +7,7 @@ class Lending < ActiveRecord::Base
   validates_presence_of :book, :date_of_lend, :user
   validates_presence_of :date_of_return, :if => :returned?
 
+  before_validation :check_inventory, :if => :book
   before_save :set_due_date
   after_create :increment_borrow_out
   before_update :get_returned_status
@@ -41,6 +42,10 @@ class Lending < ActiveRecord::Base
     inventory = book.inventory
     inventory.borrow_out += 1
     inventory.save!
+  end
+
+  def check_inventory
+    book.inventory.in_stock > 0
   end
 
 end
