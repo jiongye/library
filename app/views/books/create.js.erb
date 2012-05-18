@@ -1,7 +1,7 @@
 <% if @new_book %>
   $('table tbody tr.highlight').removeClass("highlight");
   $('#form').html("<%= escape_javascript(render "form", :book => @new_book) %>")
-  $('#form').prepend("<%= raw escape_javascript("<div class='alert alert-success'>The new book #{@book.title} was successfully created</div>") %>")
+  $('#form').prepend("<%= raw escape_javascript("<div class='alert alert-success'>The new book #{h @book.title} was successfully created</div>") %>")
   $('table tbody').prepend("<%= escape_javascript(render 'table_row', :book => @book) %>")
   $('table tbody tr:first-child').addClass("highlight");
   $('#form .alert-success').fadeOut(3000, function(){
