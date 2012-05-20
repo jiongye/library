@@ -13,6 +13,9 @@ class Lending < ActiveRecord::Base
   before_update :get_returned_status
   after_update :update_borrow_out_count
 
+  scope :active, where(:returned => false)
+  scope :already_returned, where(:returned => true)
+
   private
 
   def set_due_date
