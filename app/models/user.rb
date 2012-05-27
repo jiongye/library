@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :contact, :reject_if => :all_blank
 
+  def role?(role_name)
+    role.name == role_name.to_s
+  end
+
   private
 
   def set_default_role
