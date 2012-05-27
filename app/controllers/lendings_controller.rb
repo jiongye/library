@@ -3,7 +3,7 @@ class LendingsController < ApplicationController
 
   def index
     @q = Lending.search(params[:q])
-    @lendings = @q.result.active.includes(:book).includes(:user).includes(:course_period).page(params[:page])
+    @lendings = @q.result.active.includes(:book).includes(:user).includes(:course_period).order(:due_date).page(params[:page])
   end
 
   def new
