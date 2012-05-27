@@ -1,4 +1,21 @@
 #lending
+
+  %h3
+    Find User
+  #search_user
+    = search_form_for @q, :html => {:class => 'form-horizontal'} do |f|
+      .control-group
+        = f.label :user_name_cont, 'Name', :class => 'control-label'
+        .controls
+          = f.text_field :user_name_cont
+
+      .control-group
+        = f.label :user_contact_home_phone_or_user_contact_cell_phone_or_user_contact_work_phone_cont, 'Phone Number', :class => 'control-label'
+        .controls
+          = f.text_field :user_contact_home_phone_or_user_contact_cell_phone_or_user_contact_work_phone_cont
+
+        = f.submit 'Search', :class => 'btn'
+
   %h3
     List of Lendings
 

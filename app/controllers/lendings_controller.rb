@@ -2,7 +2,8 @@ class LendingsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @lendings = Lending.active.includes(:book).includes(:user).includes(:course_period).page(params[:page])
+    @q = Lending.search(params[:q])
+    @lendings = @q.result.active.includes(:book).includes(:user).includes(:course_period).page(params[:page])
   end
 
   def new
