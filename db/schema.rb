@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120508021039) do
+ActiveRecord::Schema.define(:version => 20130325203707) do
 
   create_table "books", :force => true do |t|
     t.string   "title"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(:version => 20120508021039) do
     t.string   "shelve_location"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.string   "book_number"
+    t.string   "label"
   end
 
   add_index "books", ["category_id"], :name => "index_books_on_category_id"
@@ -67,12 +69,13 @@ ActiveRecord::Schema.define(:version => 20120508021039) do
 
   create_table "inventories", :force => true do |t|
     t.integer  "book_id"
-    t.integer  "borrow_out", :default => 0
-    t.integer  "temple_out", :default => 0
-    t.integer  "course_out", :default => 0
-    t.integer  "quantity",   :default => 0
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.integer  "borrow_out",      :default => 0
+    t.integer  "temple_out",      :default => 0
+    t.integer  "course_out",      :default => 0
+    t.integer  "quantity",        :default => 0
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.integer  "shelve_quantity"
   end
 
   add_index "inventories", ["book_id"], :name => "index_inventories_on_book_id"

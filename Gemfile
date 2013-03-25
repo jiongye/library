@@ -4,8 +4,8 @@ gem 'pg'
 gem 'simple_form'
 gem 'jquery-rails'
 gem 'haml-rails'
-gem "devise", ">= 2.1.0"
-gem "bootstrap-sass", ">= 2.0.1"
+gem "devise"
+gem "bootstrap-sass"
 gem 'thin'
 gem 'kaminari'
 gem "cancan"

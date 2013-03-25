@@ -10,7 +10,7 @@
   .float-left
     = f.input :shelve_location
     = f.simple_fields_for :inventory, :defaults => { :input_html => { :class => 'span2' } } do |i|
-      = i.input :quantity
+      = i.input :shelve_quantity
       = i.input :temple_out
       = i.input :course_out, :label => 'Class out'
 
