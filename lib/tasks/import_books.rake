@@ -7,7 +7,7 @@ task :import_books => :environment do
   CSV.foreach(file_path) do |row|
     category_name = row[0].strip
     temple_name = row[2].strip
-    title = row[3].strip
+    title = row[6].strip[0..-6]
     book_number = row[7].strip
     shelve_location = row[10].strip
     shelve_quantity = row[11].strip
