@@ -10,6 +10,7 @@ gem 'thin'
 gem 'kaminari'
 gem "cancan"
 gem "ransack"
+gem 'therubyracer', :platforms => :ruby
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
