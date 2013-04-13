@@ -1,42 +1,27 @@
 class User < ActiveRecord::Base
   belongs_to :role
-  has_one :contact, :dependent => :destroy
 
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable, :validatable
-  devise :database_authenticatable, :registerable,
+  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable,
+  devise :database_authenticatable, :registerable, :validatable,
          :recoverable, :rememberable, :trackable
 
-  #validates_presence_of :email
-  validates_uniqueness_of :email, :allow_blank => true, :case_sensitive => false
-  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :allow_blank => true
-
-  validates_presence_of :password, :if => :password_required?
-  validates_confirmation_of :password, :if => :password_required?
+  validates_presence_of :role, :name, :username
+  validates_uniqueness_of :username, :library_id
+  validates_presence_of :password
+  validates_confirmation_of :password
   validates_length_of :password, :within => 6..128, :allow_blank => true
 
-  validates_presence_of :role, :name
-  validates_uniqueness_of :username, :library_id
-
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :username, :role_id, :contact_attributes
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :username, :role_id
 
-
-  before_validation :set_default_role
   before_validation :generate_library_id, :on => :create
-
-  accepts_nested_attributes_for :contact, :reject_if => :all_blank
 
   def role?(role_name)
     role.name == role_name.to_s
   end
 
   private
-
-  def set_default_role
-    borrower = Role.find_by_name("borrower")
-    self.role = borrower unless role
-  end
 
   def password_required?
     !password.blank? || !password_confirmation.blank?

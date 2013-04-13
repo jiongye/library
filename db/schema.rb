@@ -34,24 +34,6 @@ ActiveRecord::Schema.define(:version => 20130325203707) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "contacts", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "street"
-    t.string   "apt"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip"
-    t.string   "home_phone"
-    t.string   "cell_phone"
-    t.string   "work_phone"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "contacts", ["user_id"], :name => "index_contacts_on_user_id"
-
   create_table "course_periods", :force => true do |t|
     t.date     "start_date"
     t.integer  "course_id"
@@ -95,6 +77,21 @@ ActiveRecord::Schema.define(:version => 20130325203707) do
   add_index "lendings", ["book_id"], :name => "index_lendings_on_book_id"
   add_index "lendings", ["course_period_id"], :name => "index_lendings_on_course_period_id"
   add_index "lendings", ["user_id"], :name => "index_lendings_on_user_id"
+
+  create_table "members", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "street"
+    t.string   "apt"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "home_phone"
+    t.string   "cell_phone"
+    t.string   "work_phone"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"

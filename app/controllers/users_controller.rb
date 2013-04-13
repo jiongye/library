@@ -11,7 +11,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @user.build_contact
   end
 
   def create
@@ -20,14 +19,12 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to users_path, :notice => 'The new user was successfully created'
     else
-      @user.build_contact unless @user.contact
       render 'new'
     end
   end
 
   def edit
     @user = User.find(params[:id])
-    @user.build_contact unless @user.contact
   end
 
   def update
@@ -36,7 +33,6 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:user])
       redirect_to users_path, :notice => 'The user was successfully updated'
     else
-      @user.build_contact unless @user.contact
       render :action => "edit"
     end
   end

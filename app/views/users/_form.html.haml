@@ -7,19 +7,6 @@
 = f.input :password_confirmation
 = f.association :role
 
-%h5
-  Fill in Contact information below:
-
-= f.simple_fields_for :contact, :defaults => { :input_html => { :class => 'span4' } } do |c|
-  = c.input :street
-  = c.input :apt
-  = c.input :city
-  = c.input :state
-  = c.input :zip
-  = c.input :home_phone
-  = c.input :cell_phone
-  = c.input :work_phone
-
 .form-actions
   = f.button :submit, :class => 'btn btn-primary'
   = link_to "Cancel", users_path, :class => 'btn'

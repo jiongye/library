@@ -1,7 +1,6 @@
-class CreateContacts < ActiveRecord::Migration
+class CreateMembers < ActiveRecord::Migration
   def change
-    create_table :contacts do |t|
-      t.references :user
+    create_table :members do |t|
       t.string :first_name
       t.string :last_name
       t.string :street
@@ -15,6 +14,5 @@ class CreateContacts < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :contacts, :user_id
   end
 end
