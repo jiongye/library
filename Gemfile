@@ -11,6 +11,7 @@ gem 'kaminari'
 gem "cancan"
 gem "ransack"
 gem 'therubyracer', :platforms => :ruby
+gem 'activeadmin'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
 
   validates_presence_of :role, :name, :username
   validates_uniqueness_of :username, :library_id
-  validates_presence_of :password
-  validates_confirmation_of :password
+  validates_presence_of :password, :if => :password_required?
+  validates_confirmation_of :password, :if => :password_required?
   validates_length_of :password, :within => 6..128, :allow_blank => true
 
   # Setup accessible (or protected) attributes for your model
