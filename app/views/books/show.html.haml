@@ -21,6 +21,16 @@
 
   %p
     %span.field_name
+      Book Number:
+    = @book.book_number
+
+  %p
+    %span.field_name
+      Label:
+    = @book.label
+
+  %p
+    %span.field_name
       Category:
     = @book.category.try(:name)
 
