@@ -2,8 +2,8 @@ class User < ActiveRecord::Base
   belongs_to :role
 
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable,
-  devise :database_authenticatable, :registerable, :validatable,
+  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable, :validatable
+  devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable
 
   validates_presence_of :role, :name, :username
@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :if => :password_required?
   validates_confirmation_of :password, :if => :password_required?
   validates_length_of :password, :within => 6..128, :allow_blank => true
+  validates_uniqueness_of :email, :allow_blank => true, :case_sensitive => false
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :allow_blank => true
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :username, :role_id

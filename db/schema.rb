@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(:version => 20130413153930) do
     t.date     "date_of_lend"
     t.date     "date_of_return"
     t.date     "due_date"
-    t.integer  "user_id"
+    t.integer  "member_id"
     t.integer  "course_period_id"
     t.boolean  "returned",         :default => false
     t.datetime "created_at",                          :null => false
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(:version => 20130413153930) do
 
   add_index "lendings", ["book_id"], :name => "index_lendings_on_book_id"
   add_index "lendings", ["course_period_id"], :name => "index_lendings_on_course_period_id"
-  add_index "lendings", ["user_id"], :name => "index_lendings_on_user_id"
+  add_index "lendings", ["member_id"], :name => "index_lendings_on_member_id"
 
   create_table "members", :force => true do |t|
     t.string   "first_name"

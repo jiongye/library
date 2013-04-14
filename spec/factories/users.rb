@@ -5,6 +5,7 @@ FactoryGirl.define do
     role
 
     name 'Test User'
+    sequence(:username) {|n| "username#{n}"}
     sequence(:email) {|n| "email#{n}@testing.com" }
     password 'please'
     password_confirmation 'please'

@@ -1,10 +1,10 @@
 class Lending < ActiveRecord::Base
   belongs_to :book
-  belongs_to :user
+  belongs_to :member
   belongs_to :course_period
-  attr_accessible :date_of_lend, :date_of_return, :book_id, :user_id, :course_period_id
+  attr_accessible :date_of_lend, :date_of_return, :book_id, :member_id, :course_period_id
 
-  validates_presence_of :book, :date_of_lend, :user
+  validates_presence_of :book, :date_of_lend, :member
   validates_presence_of :date_of_return, :if => :returned?
 
   before_validation :check_inventory, :if => :book

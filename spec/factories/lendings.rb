@@ -2,7 +2,7 @@ FactoryGirl.define do
 
   factory :lending do
     book
-    user
+    member
 
     date_of_lend Date.today - 5.days
   end
