@@ -9,10 +9,10 @@
 
   .float-left
     = f.input :shelve_location
+    = f.input :book_number
+    = f.input :label
     = f.simple_fields_for :inventory, :defaults => { :input_html => { :class => 'span2' } } do |i|
-      = i.input :shelve_quantity
-      = i.input :temple_out
-      = i.input :course_out, :label => 'Class out'
+      = i.input :shelve_quantity, :label => 'Quantity'
 
   .float-left.submit
     = f.button :submit, :class => 'btn btn-primary'
