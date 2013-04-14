@@ -5,13 +5,13 @@
   #search_user
     = search_form_for @q, :html => {:class => 'form-horizontal'} do |f|
       .float-left
-        = f.label :user_name_cont, 'Name', :class => 'control-label'
+        = f.label :member_first_name_or_member_last_name_cont, 'Name', :class => 'control-label'
         .controls
-          = f.text_field :user_name_cont
+          = f.text_field :member_first_name_or_member_last_name_cont
 
       .control-group
-        = f.label :user_contact_home_phone_or_user_contact_cell_phone_or_user_contact_work_phone_cont, 'Phone Number', :class => 'control-label'
-        = f.text_field :user_contact_home_phone_or_user_contact_cell_phone_or_user_contact_work_phone_cont, :class => 'margin-20'
+        = f.label :member_home_phone_or_member_cell_phone_or_member_work_phone_cont, 'Phone Number', :class => 'control-label'
+        = f.text_field :member_home_phone_or_member_cell_phone_or_member_work_phone_cont, :class => 'margin-20'
         = f.submit 'Search', :class => 'btn'
 
   %hr
@@ -44,7 +44,7 @@
         %td
           = link_to x.book.title, book_path(x)
         %td
-          = x.user.name
+          = x.member.name
         %td
           = x.course_period.try(:name)
         %td

@@ -5,7 +5,6 @@ class CreateBooks < ActiveRecord::Migration
       t.references :temple
       t.references :category
       t.string :author
-      t.date :date_received
       t.string :shelve_location
 
       t.timestamps

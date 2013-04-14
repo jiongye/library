@@ -2,8 +2,7 @@
   = f.error_notification
 
   = f.association :book
-  = f.association :user
-  = f.association :course_period, :label => "Class Period"
+  = f.association :member
   = f.input :date_of_lend, :label => "Start Date", :input_html => { :class => 'span2' }
 
   .form-actions

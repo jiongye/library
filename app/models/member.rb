@@ -3,4 +3,8 @@ class Member < ActiveRecord::Base
 
   has_many :lendings
 
+  def name
+    last_name + ', ' + first_name
+  end
+
 end
