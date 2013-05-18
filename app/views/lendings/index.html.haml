@@ -1,20 +1,20 @@
 #lending
 
-  %h3
-    Find User
-  #search_user
-    = search_form_for @q, :html => {:class => 'form-horizontal'} do |f|
-      .float-left
-        = f.label :member_first_name_or_member_last_name_cont, 'Name', :class => 'control-label'
-        .controls
-          = f.text_field :member_first_name_or_member_last_name_cont
-
-      .control-group
-        = f.label :member_home_phone_or_member_cell_phone_or_member_work_phone_cont, 'Phone Number', :class => 'control-label'
-        = f.text_field :member_home_phone_or_member_cell_phone_or_member_work_phone_cont, :class => 'margin-20'
-        = f.submit 'Search', :class => 'btn'
-
-  %hr
+  -# %h3
+  -#   Find User
+  -# #search_user
+  -#   = search_form_for @q, :html => {:class => 'form-horizontal'} do |f|
+  -#     .float-left
+  -#       = f.label :member_first_name_or_member_last_name_cont, 'Name', :class => 'control-label'
+  -#       .controls
+  -#         = f.text_field :member_first_name_or_member_last_name_cont
+  -#
+  -#     .control-group
+  -#       = f.label :member_home_phone_or_member_cell_phone_or_member_work_phone_cont, 'Phone Number', :class => 'control-label'
+  -#       = f.text_field :member_home_phone_or_member_cell_phone_or_member_work_phone_cont, :class => 'margin-20'
+  -#       = f.submit 'Search', :class => 'btn'
+  -#
+  -# %hr
 
   %h3
     List of Lendings
@@ -30,8 +30,6 @@
         %th
           Borrower
         %th
-          Class Period
-        %th
           Start Date
         %th
           Due Date
@@ -45,8 +43,6 @@
           = link_to x.book.title, book_path(x)
         %td
           = x.member.name
-        %td
-          = x.course_period.try(:name)
         %td
           = x.date_of_lend
         %td
