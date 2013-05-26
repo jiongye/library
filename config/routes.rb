@@ -4,7 +4,7 @@ Library::Application.routes.draw do
 
   devise_for :users, :skip => [:registrations]
   resources :books
-  resources :lendings, :except => [:show]
+  resources :lendings, :except => [:show, :edit, :update]
   resources :returns, :only => [:edit, :update]
 
 end

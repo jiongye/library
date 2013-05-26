@@ -6,7 +6,7 @@ class Lending < ActiveRecord::Base
   validates_presence_of :book, :date_of_lend, :member
   validates_presence_of :date_of_return, :if => :returned?
 
-  validate :check_inventory
+  validate :check_inventory, :on => :create
   before_save :set_due_date
   after_create :increment_borrow_out
   before_update :get_returned_status

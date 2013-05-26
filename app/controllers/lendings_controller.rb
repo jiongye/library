@@ -20,20 +20,6 @@ class LendingsController < ApplicationController
     end
   end
 
-  def edit
-    @lending = Lending.find(params[:id])
-  end
-
-  def update
-    @lending = Lending.find(params[:id])
-
-    if @lending.update_attributes(params[:lending])
-      redirect_to lendings_path, :notice => 'The lending was successfully updated'
-    else
-      render :action => "edit"
-    end
-  end
-
   def destroy
     @lending = Lending.find(params[:id])
 

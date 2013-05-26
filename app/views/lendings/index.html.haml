@@ -50,8 +50,6 @@
         %td
           = x.date_of_return
         %td
-          = link_to 'Edit', edit_lending_path(x), :class => 'btn'
-          &nbsp;
           - unless x.returned?
             = link_to return_button_label(x), edit_return_path(x), :class => 'btn'
             &nbsp;
