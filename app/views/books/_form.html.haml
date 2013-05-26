@@ -12,7 +12,7 @@
     = f.input :book_number
     = f.input :label
     = f.simple_fields_for :inventory, :defaults => { :input_html => { :class => 'span2' } } do |i|
-      = i.input :shelve_quantity, :label => 'Quantity'
+      = i.input :shelve_quantity
 
   .float-left.submit
     = f.button :submit, :class => 'btn btn-primary'

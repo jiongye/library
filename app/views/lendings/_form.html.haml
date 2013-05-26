@@ -1,7 +1,7 @@
 = simple_form_for lending, :html => { :class => 'form-horizontal' }, :defaults => { :input_html => { :class => 'span4' } } do |f|
   = f.error_notification
 
-  = f.association :book
+  = f.association :book, :collection => Book.order('book_number'), :label_method => :book_select_title, value_method: :id
   = f.association :member
   = f.input :date_of_lend, :label => "Start Date", :input_html => { :class => 'span2' }
 

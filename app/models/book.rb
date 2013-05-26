@@ -8,5 +8,8 @@ class Book < ActiveRecord::Base
 
   accepts_nested_attributes_for :inventory
 
-  default_scope order('id desc')
+  def book_select_title
+    "#{book_number} - #{title}"
+  end
+
 end

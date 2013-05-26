@@ -4,10 +4,6 @@ class Inventory < ActiveRecord::Base
 
   validates_presence_of :quantity
 
-  def in_stock
-    quantity - borrow_out.to_i
-  end
-
   def on_shelve
     shelve_quantity - borrow_out.to_i
   end

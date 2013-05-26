@@ -52,7 +52,7 @@ describe Lending do
     end
   end
 
-  describe "before_validation: check_inventory" do
+  describe "validate: check_inventory" do
     it "should not create a new lending if the inventory is <= 0" do
       @inventory.borrow_out = 20
       @inventory.save
