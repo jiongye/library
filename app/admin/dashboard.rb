@@ -15,6 +15,10 @@ ActiveAdmin.register_page "Dashboard" do
         link_to 'Lendings', lendings_path
       end
 
+      div do
+        link_to 'New Lending', new_lending_path
+      end
+
     end
 
     # Here is an example of a simple dashboard with columns and panels.

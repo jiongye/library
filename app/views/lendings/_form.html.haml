@@ -3,7 +3,7 @@
 
   = f.association :book, :collection => Book.order('book_number'), :label_method => :book_select_title, value_method: :id
   = f.association :member
-  = f.input :date_of_lend, :label => "Start Date", :input_html => { :class => 'span2' }
+  = f.input :date_of_lend, :as => :string, :label => "Start Date", :input_html => { :class => 'span2 datepicker' }
 
   .form-actions
     = f.button :submit, :class => 'btn btn-primary'
