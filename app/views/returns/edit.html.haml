@@ -22,7 +22,7 @@
         Due Date:
       = @lending.due_date
 
-    = f.input :date_of_return, :label => "Return Date", :input_html => { :class => 'span2' }
+    = f.input :date_of_return, :as => :string, :label => "Return Date", :input_html => { :class => 'span2 datepicker' }
 
     .form-actions
       = f.button :submit, 'Return Book', :class => 'btn btn-primary'
